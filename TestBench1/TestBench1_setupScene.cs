@@ -153,6 +153,7 @@ namespace TestBench0
 				scene.AddObject(obj1);
 
 				renderMesh1.playAnimationLoop(animRunning, 0f);
+
 				#endif
 
 				#if true

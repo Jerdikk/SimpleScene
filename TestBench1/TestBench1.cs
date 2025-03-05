@@ -143,14 +143,33 @@ namespace TestBench0
 			base.OnUpdateFrame(e);
 
 			environmentScene.Update((float)e.Time);
+
+			foreach(SSObject sObject in scene.objects)
+			{
+				if (sObject != null)
+				{
+					if (sObject.Name.Equals("red bones (running loop)"))
+					{
+						Vector3 vector = sObject.Dir;						
+						vector.Y = 0;
+						vector.X = 1;
+						vector.Z = 0;
+                        vector.Normalize();
+						vector *= 0.1f;
+                        sObject.Pos += vector; 
+							int yy = 1; ;
+					}
+				}
+			}
+
 			scene.Update ((float)e.Time);
 			hudScene.Update ((float)e.Time);
 
 			driveCamera ((float)e.Time);
 
-			if (renderMesh5NeckJoint != null) {
+			/*if (renderMesh5NeckJoint != null) {
 				renderMesh5NeckJoint.theta.value += (float)Math.PI / 2f * (float)e.Time;
-			}
+			}*/
 		}
 
 		private void driveCamera(float deltaT)
